@@ -1,8 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './Header.scss';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import {setCurrentPath} from "../../assets/store/CurrentPathReducer";
+import polyline from "polyline";
 
 function Header() {
+    let dispatch = useDispatch();
     const paths = useSelector(store => store.paths);
 
     function getPathNumbers() {
@@ -19,7 +22,7 @@ function Header() {
         for (let key in paths) {
             let pointsArray = paths[key];
             let jsxPoints = (
-                <tr key={key} className={'table-map__row'} onClick={()=>rowClickHandler(key)}>
+                <tr key={key} className={'table-map__row'} onClick={(event)=>rowClickHandler(key, event)}>
                     <td className={'table-map__row_item'}>Маршрут №{++pathCount}</td>
                     {pointsArray.map((item, index) => {
                         return (
@@ -31,10 +34,16 @@ function Header() {
         }
         return result;
     }
-
-    function rowClickHandler(key) {
-        console.log(paths[key]);
+    function rowClickHandler(key, event) {
+        const rows = document.querySelectorAll('.table-map__row');
+        rows.forEach(row => {
+            row.classList.remove('active');
+        });
+        event.currentTarget.classList.add('active');
+        dispatch(setCurrentPath(paths[key]));
     }
+
+
 
     return (
         <header className={'header'}>

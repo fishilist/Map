@@ -25,12 +25,19 @@
 }
 
 .table-map__body {
-  .table-map__row:nth-child(2n+1) {
+  /*.table-map__row:nth-child(2n+1) {
     background-color: #ede7d9;
   }
 
   .table-map__row:nth-child(2n) {
     background-color: #d5d5d5;
+  }*/
+}
+
+.table-map__row {
+  background-color: #ffffff;
+  &.active {
+    background-color: #CA9556;
   }
 }
 
@@ -41,9 +48,6 @@
   border: 1px solid #000;
   background-color: #d3d3d3;
   padding: 15px;
-}
-
-.table-map__row {
 }
 
 .table-map__row_item {
