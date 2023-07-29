@@ -1,11 +1,9 @@
-/*
 import {createStore, combineReducers} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
-import {statisticReducer} from "./statisticReducer";
-
+import {PathReducer} from "./PathReducer";
 
 const rootReducer = combineReducers({
-    Foo: FooReducer
+    paths: PathReducer
 })
 export let store;
-store = createStore(rootReducer, composeWithDevTools());*/
+store = createStore(rootReducer, composeWithDevTools());
