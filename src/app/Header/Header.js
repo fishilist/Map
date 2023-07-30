@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPath} from "../../assets/store/CurrentPathReducer";
-import polyline from "polyline";
+import {asyncSetPathCreator} from "../../assets/store/PathReducer";
 
 function Header() {
     let dispatch = useDispatch();
@@ -40,7 +40,7 @@ function Header() {
             row.classList.remove('active');
         });
         event.currentTarget.classList.add('active');
-        dispatch(setCurrentPath(paths[key]));
+        dispatch(asyncSetPathCreator(paths[key]));
     }
 
 

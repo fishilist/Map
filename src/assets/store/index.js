@@ -1,11 +1,15 @@
-import {createStore, combineReducers} from "redux";
-import {composeWithDevTools} from "redux-devtools-extension";
+import {createStore, combineReducers, applyMiddleware} from "redux";
 import {PathReducer} from "./PathReducer";
 import {CurrentPathReducer} from "./CurrentPathReducer";
+import createSagaMiddleware from 'redux-saga'
+import {pathWatcher} from "../saga/PathSaga";
+
+const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers({
     paths: PathReducer,
     currentPath: CurrentPathReducer
 })
-export let store;
-store = createStore(rootReducer, composeWithDevTools());
+export let store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+sagaMiddleware.run(pathWatcher);
