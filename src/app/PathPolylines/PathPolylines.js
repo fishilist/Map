@@ -41,11 +41,13 @@ function PathPolylines(props) {
     }
 
     function showSteps(data) {
+        console.log('\n');
         data.routes[0].legs.forEach(leg => {
             leg.steps.forEach(step => {
                 console.log(step.maneuver.type + " " + step.maneuver.modifier + ", " + step.name);
             })
-        })
+        });
+        console.log('\n');
     }
 
     useEffect(() => {
