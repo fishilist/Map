@@ -1,4 +1,4 @@
-let defaultState = {
+const defaultState = {
     pathOne: [{
         lat: 59.84660399,
         lng: 30.29496392,
@@ -40,44 +40,16 @@ let defaultState = {
     }]
 }
 
-export const ADD_PATH = "ADD_PATH";
 export const SET_PATH = "SET_PATH";
-export const ASYNC_ADD_PATH = "ASYNC_ADD_PATH";
 export const ASYNC_SET_PATH = "ASYNC_SET_PATH";
 
 export function PathReducer(state = defaultState, action) {
     switch (action.type) {
-        case ADD_PATH:
-            return {...state, ...action.payload}
         case SET_PATH:
             return {...action.payload}
         default:
             return state;
     }
 }
-
-export function addPathCreator(payload) {
-    return {
-        type: ADD_PATH,
-        payload: payload
-    }
-}
-export function setPathCreator(payload) {
-    return {
-        type: ADD_PATH,
-        payload: payload
-    }
-}
-
-export function asyncAddPathCreator(payload) {
-    return {
-        type: ADD_PATH,
-        payload: payload
-    }
-}
-export function asyncSetPathCreator(payload) {
-    return {
-        type: ASYNC_SET_PATH,
-        payload: payload
-    }
-}
+//export const setPath = payload => ({type: SET_PATH, payload})
+//export const asyncSetPath = () => ({type: ASYNC_SET_PATH})

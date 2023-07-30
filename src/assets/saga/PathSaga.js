@@ -1,17 +1,17 @@
-import {put, takeEvery} from 'redux-saga/effects'
-import {addPathCreator, ASYNC_ADD_PATH, ASYNC_SET_PATH, setPathCreator} from "../store/PathReducer";
+/*
+import {put, takeEvery, call} from 'redux-saga/effects'
 
-function* addPathWorker() {
-    // yield delay(1000ms)
-    yield put(addPathCreator())
+const fetchPath = () => {
+    return fetch('https://jsonplaceholder.typicode.com/users?_limit=10')
 }
 
 function* setPathWorker() {
-    // yield delay(1000ms)
-    yield put(setPathCreator())
+    const data = yield call(fetchPath)
+    const json = yield call(() => new Promise(res => res(data.json())))
+    yield put(setPath())
 }
 
 export function* pathWatcher() {
-    yield takeEvery(ASYNC_ADD_PATH, addPathWorker);
     yield takeEvery(ASYNC_SET_PATH, setPathWorker);
 }
+*/

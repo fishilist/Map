@@ -6,20 +6,17 @@ let defaultState = {
     }
 }
 
-const SET_PATH = "SET_PATH";
+const SET_CURRENT_PATH = "SET_CURRENT_PATH";
+export const ASYNC_SET_CURRENT_PATH = 'ASYNC_SET_CURRENT_PATH'
 
 export function CurrentPathReducer(state = defaultState, action) {
     switch (action.type) {
-        case SET_PATH:
+        case SET_CURRENT_PATH:
             return {...action.payload}
         default:
             return state;
     }
 }
 
-export function setCurrentPath(payload) {
-    return {
-        type: SET_PATH,
-        payload: payload
-    }
-}
+export const setCurrentPath = payload => ({type: SET_CURRENT_PATH, payload})
+export const asyncSetCurrentPath = () => ({type: ASYNC_SET_CURRENT_PATH})

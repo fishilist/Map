@@ -2,7 +2,6 @@ import React from 'react';
 import './Header.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPath} from "../../assets/store/CurrentPathReducer";
-import {asyncSetPathCreator} from "../../assets/store/PathReducer";
 
 function Header() {
     let dispatch = useDispatch();
@@ -19,6 +18,7 @@ function Header() {
     function getPaths() {
         let result = [];
         let pathCount = 0;
+        console.log(paths);
         for (let key in paths) {
             let pointsArray = paths[key];
             let jsxPoints = (
@@ -40,7 +40,7 @@ function Header() {
             row.classList.remove('active');
         });
         event.currentTarget.classList.add('active');
-        dispatch(asyncSetPathCreator(paths[key]));
+        dispatch(setCurrentPath(paths[key]));
     }
 
 
